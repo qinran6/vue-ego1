@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h2>订单管理</h2>
-    <router-view/>
+    <h2>退货管理</h2>
   </div>
 </template>
 

@@ -5,11 +5,14 @@ import Layout from '../views/Layout/index.vue'
 import Home from'../views/Home/index.vue'
 import Login from '../views/Login/login.vue'
 
+
 // 异步
 const Goods=()=>import('../views/Goods/Goods.vue')
 const Params=()=>import('../views/Params/Params.vue')
 const Advert=()=>import('../views/Advert/Advert.vue')
 const Order=()=>import('../views/Order/index.vue')
+const OrderList=()=>import('../views/Order/OrderList/index.vue')
+const OrderBack=()=>import('../views/Order/OrderBack/index.vue')
 
 Vue.use(VueRouter)
 
@@ -41,7 +44,17 @@ const routes = [
       {
         path:'/order',
         name:'Order',
-        component:Order
+        component:Order,
+        children:[
+          {
+            path:'order-list',
+            component:OrderList
+          },
+          {
+            path:'order-back',
+            component:OrderBack
+          }
+        ]
       }
     ]
   },
