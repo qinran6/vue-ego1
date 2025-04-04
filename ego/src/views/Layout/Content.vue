@@ -1,7 +1,11 @@
 <template>
   <div>
-    <h2>右侧内容区域</h2>
-    
+    <div class="header">顶部区域</div>
+    <!-- 内容区域----路由出口 -->
+    <div class="content">
+      <router-view/>
+    </div>
+
   </div>
 </template>
 
