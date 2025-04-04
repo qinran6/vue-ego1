@@ -15,6 +15,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang='less' scoped>
+.header{
+  height:60px;
+  background: skyblue;
+}
 </style>
