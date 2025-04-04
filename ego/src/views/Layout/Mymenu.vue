@@ -3,14 +3,17 @@
     <el-menu
       default-active="/"
       class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
-      background-color="#545c64"
+      background-color="#1b3554"
       text-color="#fff"
-      active-text-color="#ffd04b"
+      active-text-color="#409EFF"
       router
-      >
-      
+      :collapse="isCollapse"
+    >
+      <el-menu-item>
+        <template v-slot:title>
+        <span>易购后台管理系统</span>
+        </template>
+      </el-menu-item>
       <el-menu-item index="/">
         <i class="el-icon-menu"></i>
         <template v-slot:title>
@@ -58,8 +61,8 @@
             <span>退货管理</span>
           </el-menu-item>
         </el-menu-item-group>
-        
       </el-submenu>
+
     </el-menu>
 
   </div>
@@ -67,10 +70,21 @@
 
 <script>
 export default {
-
+  props:['isCollapse'],
+  data(){
+    return{
+      // isCollapse:false
+    }
+  }
 }
 </script>
 
-<style>
-
+<style lang='less' scoped>
+.el-menu {
+  border-right:0;
+  .is-active {
+    background: #054476 !important;
+    color: #fff !important;
+  }
+}
 </style>
