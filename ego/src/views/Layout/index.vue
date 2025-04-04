@@ -1,9 +1,10 @@
 <template>
   <div class="layout">
     <!-- 左侧导航区域 -->
+     <!-- isCollapse='isCollapse'允许接收isCollapes的值 -->
      <MyMenu class="menu" :isCollapse='isCollapse'/>
     <!-- 右侧导航区域 -->
-    <Content class="content" @changeCollapse='changeCollapse'/>
+    <Content class="content" @changeCollapse='changeCollapse' :isCollapse='isCollapse'/>
   </div>
 </template>
 

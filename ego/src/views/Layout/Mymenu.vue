@@ -70,6 +70,7 @@
 
 <script>
 export default {
+  // 接收isCollapse的值
   props:['isCollapse'],
   data(){
     return{
