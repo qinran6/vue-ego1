@@ -45,6 +45,7 @@ const routes = [
         path:'/order',
         name:'Order',
         component:Order,
+        redirect:'/order/order-list',
         children:[
           {
             path:'order-list',
