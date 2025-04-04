@@ -4,7 +4,8 @@
      <!-- isCollapse='isCollapse'允许接收isCollapes的值 -->
      <MyMenu class="menu" :isCollapse='isCollapse'/>
     <!-- 右侧导航区域 -->
-    <Content class="content" @changeCollapse='changeCollapse' :isCollapse='isCollapse'/>
+     <!-- class="{isActive:isCollapse}"isCollapse为真时右侧区域的大小跟着左侧导航的折叠而变化 -->
+    <Content class="content" :class="{isActive:isCollapse}" @changeCollapse='changeCollapse' :isCollapse='isCollapse'/>
   </div>
 </template>
 
@@ -12,6 +13,7 @@
 // 作为子组件导进来
 import MyMenu from './Mymenu.vue'
 import Content from './Content.vue'
+import { isReactive } from 'vue';
 
 export default {
     components:{
@@ -34,9 +36,9 @@ export default {
 
 <style lang='less' scoped>
 .layout{
-    display: flex;
+    // display: flex;
     .menu{
-        width: 200px;
+        //  width: 200px;
         min-height: 500px;
         background-color: #1b3554;
         // 定位左侧导航区域
@@ -45,8 +47,11 @@ export default {
         bottom: 0;
     }
     .content{
-        flex: 1;
+        //  flex: 1;
         margin-left: 200px;
+    }
+    .isActive{
+        margin-left: 64px;
     }
 }
 </style>
