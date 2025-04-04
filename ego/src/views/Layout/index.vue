@@ -1,9 +1,9 @@
 <template>
   <div class="layout">
     <!-- 左侧导航区域 -->
-     <MyMenu class="menu"/>
+     <MyMenu class="menu" :isCollapse='isCollapse'/>
     <!-- 右侧导航区域 -->
-    <Content class="content"/>
+    <Content class="content" @changeCollapse='changeCollapse'/>
   </div>
 </template>
 
@@ -17,7 +17,17 @@ export default {
         MyMenu,
         Content,
         Content
+    },
+    data(){
+    return{
+       isCollapse:false
     }
+  },
+  methods:{
+    changeCollapse(){
+        this.isCollapse=!this.isCollapse;
+    }
+  }
 }
 </script>
 
@@ -27,7 +37,7 @@ export default {
     .menu{
         width: 200px;
         min-height: 500px;
-        background-color: #666;
+        background-color: #1b3554;
         // 定位左侧导航区域
         position: fixed;
         top: 0;
