@@ -8,9 +8,7 @@
      </div>
     <!-- 表格区域展示视图数据 -->
      <div class="wrapper">
-      <el-table
-        :data="tableData"
-        style="width: 100%">
+      <el-table :data="tableData" border>
         <el-table-column
           prop="date"
           label="日期"
