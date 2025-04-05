@@ -9,20 +9,15 @@
     <!-- 表格区域展示视图数据 -->
      <div class="wrapper">
       <el-table :data="tableData" border>
-        <el-table-column
-          prop="date"
-          label="日期"
-          width="180">
-        </el-table-column>
-        <el-table-column
-          prop="name"
-          label="姓名"
-          width="180">
-        </el-table-column>
-        <el-table-column
-          prop="address"
-          label="地址">
-        </el-table-column>
+        <el-table-column prop="date" label="商品ID" width="180"></el-table-column>
+        <el-table-column prop="date" label="商品名称" width="180"></el-table-column>
+        <el-table-column prop="date" label="商品价格" width="180"></el-table-column>
+        <el-table-column prop="date" label="商品数量" width="180"></el-table-column>
+        <el-table-column prop="date" label="规格类目" width="180"></el-table-column>
+        <el-table-column prop="date" label="商品图片" width="180"></el-table-column>
+        <el-table-column prop="date" label="商品卖点" width="180"></el-table-column>
+        <el-table-column prop="date" label="商品描述" width="180"></el-table-column>
+        <el-table-column prop="date" label="操作" width="180"></el-table-column>
     </el-table>
 
      </div>
