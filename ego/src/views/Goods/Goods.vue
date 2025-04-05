@@ -53,4 +53,7 @@ export default {
     margin-left: 20px;
   }
 }
+.wrapper{
+  margin:20px 0;
+}
 </style>
