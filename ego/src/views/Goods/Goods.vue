@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="goods">
     <!-- 搜素区域 -->
      <div class="header">
       <el-input v-model="input" placeholder="请输入内容"></el-input>
@@ -25,6 +25,14 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang='less' scoped>
+.goods{
+  margin:20px;
+}
+.header{
+  display: flex;
+  button{
+    margin-left: 20px;
+  }
+}
 </style>
