@@ -9,6 +9,7 @@
     <!-- 表格区域展示视图数据 -->
      <div class="wrapper">
       <el-table :data="tableData" border>
+        <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="date" label="商品ID" width="100"></el-table-column>
         <el-table-column prop="date" label="商品名称" width="100"></el-table-column>
         <el-table-column prop="date" label="商品价格" width="100"></el-table-column>
@@ -17,7 +18,7 @@
         <el-table-column prop="date" label="商品图片" ></el-table-column>
         <el-table-column prop="date" label="商品卖点" ></el-table-column>
         <el-table-column prop="date" label="商品描述" ></el-table-column>
-        <el-table-column prop="date" label="操作" width="100"></el-table-column>
+        <el-table-column prop="date" label="操作" width="180"></el-table-column>
     </el-table>
 
      </div>
