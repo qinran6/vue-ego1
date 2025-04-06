@@ -2,7 +2,7 @@ const express=require('express')
 const router=express.Router()
 
 //路由接口
-router.length('/',(req,res)=>{
+router.get('/',(req,res)=>{
     res.send('hello')
 })
 
