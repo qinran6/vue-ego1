@@ -35,7 +35,7 @@
 
      </div>
     <!-- 分页 -->
-     <MyPagination :total='total' :pageSize='pageSize'/>
+     <MyPagination :total='total' :pageSize='pageSize' @changePage='changePage'/>
   </div>
 </template>
 
@@ -54,24 +54,33 @@ export default {
     };
   },
   methods:{
+    //分页页码
+    changePage(num){
+      this.http(num);
+    },
     // 编辑操作
     handleEdit(){},
     // 删除操作
-    handleDelete(){}
+    handleDelete(){},
+
+    http(page){
+      this.$api.getGoodsList({
+        page,
+      })
+      .then(res=>{
+        console.log(res.data);
+        if(res.data.status===200){
+            this.tableData=res.data.data;//数据列表
+            this.total=res.data.total;
+            this.pageSize=res.data.pageSize;
+        }
+      })
+    }
   },
+  
   //生命周期函数
   created(){
-    this.$api.getGoodsList({
-      page:1
-    })
-    .then(res=>{
-      console.log(res.data);
-      if(res.data.status===200){
-          this.tableData=res.data.data;//数据列表
-          this.total=res.data.total;
-          this.pageSize=res.data.pageSize;
-      }
-    })
+    this.http(1);
   }
 };
 </script>
