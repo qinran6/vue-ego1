@@ -35,7 +35,7 @@
 
      </div>
     <!-- 分页 -->
-     <MyPagination/>
+     <MyPagination :total='total' :pageSize='pageSize'/>
   </div>
 </template>
 
@@ -48,9 +48,9 @@ export default {
   data(){
     return{
       input:'',
-      tableData:[{
-          date: '2016-05-02',
-        }],
+      tableData:[],
+      total:10,
+      pageSize:1
     };
   },
   methods:{
@@ -68,6 +68,8 @@ export default {
       console.log(res.data);
       if(res.data.status===200){
           this.tableData=res.data.data;//数据列表
+          this.total=res.data.total;
+          this.pageSize=res.data.pageSize;
       }
     })
   }
