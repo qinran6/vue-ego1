@@ -35,11 +35,16 @@
 
      </div>
     <!-- 分页 -->
+     <MyPagination/>
   </div>
 </template>
 
 <script>
+import MyPagination from '../../components/MyPagination.vue'
 export default {
+  components:{
+    MyPagination
+  },
   data(){
     return{
       input:'',
