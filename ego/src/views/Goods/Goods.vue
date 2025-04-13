@@ -8,9 +8,9 @@
       <el-button type="primary">
         <router-link to='/add-goods' style="color:#fff">页面添加</router-link>
       </el-button>
-      <el-button type="primary" @click="AddGoods"> 添加  </el-button>
+      <el-button type="primary" @click="AddGoods">弹框添加 </el-button>
      </div>
-    <!-- 表格区域展示视图数据 -->
+    <!--2.表格区域展示视图数据 -->
      <div class="wrapper">
       <el-table :data="tableData" border>
         <el-table-column type="selection" width="55"></el-table-column>
@@ -38,17 +38,22 @@
     </el-table>
 
      </div>
-    <!-- 分页 -->
+    <!-- 3.分页 -->
      <MyPagination :total='total' :pageSize='pageSize' @changePage='changePage'/>
+     <!--4.显示弹框组件 操作子组件 1。父传子 2.children 3.ref-->
+     <!--<GoodsDialog :dialogVisible='dialogVisible' @changeDialog='changeDialog'/>-->
+     <GoodsDialog ref='dialog'/>
   </div>
 </template>
 
 <script>
 import MyPagination from '../../components/MyPagination.vue'
+import GoodsDialog from './GoodsDialog.vue'
 import AddGoods from './AddGoods.vue';
 export default {
   components:{
-    MyPagination
+    MyPagination,
+    GoodsDialog
   },
   data(){
     return{
@@ -58,9 +63,19 @@ export default {
       pageSize:1,
       type:1,
       list:[],
+      dialogVisible:false,
     };
   },
   methods:{
+    //添加商品弹窗
+    AddGoods(){
+      //this.dialogVisible=true;
+      //修改子组件变量数据
+      this.$refs.dialog.dialogVisible =true;
+    },
+    changeDialog(){
+      this.dialogVisible=false;
+    },
     //分页页码
     changePage(num){
      if(this.type==1){
