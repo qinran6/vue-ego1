@@ -16,7 +16,7 @@
   class="demo-ruleForm"
   >
   <el-form-item label="类目选择" prop="category">
-    <el-button type='primary'>类目选择</el-button>
+    <el-button type='primary' @click="innerVisible=true">类目选择</el-button>
   </el-form-item>
 
   <el-form-item label="商品名称" prop="title">
@@ -64,19 +64,32 @@
   <!--弹框底部区域-->
   <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible=false">取 消</el-button>
-    <el-button type="primary" @click="dialogVisible=false"
-    >确 定</el-button>
+    <el-button type="primary" @click="dialogVisible=false">确 定</el-button>
   </span>
+  <!--1.内弹框---类目选择-->
+  <el-dialog
+      width="40%"
+      title="类目选择"
+      :visible.sync="innerVisible"
+      append-to-body>
+      <TreeGoods/>
+    </el-dialog>
+
 </el-dialog>
   </div>
 </template>
 
 <script>
+import TreeGoods from './TreeGoods.vue';
 export default {
-    props:["dialogVisible"],
+   // props:["dialogVisible"],
+   components:{
+    TreeGoods
+   },
     data(){
         return {
-        //dialogVisible:false,
+        dialogVisible:false,//外弹框
+        innerVisible:false,//内弹框
         ruleForm: {//表单容器-对象
           title: '',
           price: '',
