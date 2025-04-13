@@ -1,7 +1,10 @@
 <template>
     <div style="text-align: center;margin: 20px;">
         <el-pagination background layout="total,prev, pager, next,jumper" 
-        :total="total" :page-size="pageSize" @current-change="changePage">
+        :total="total" 
+        :page-size="pageSize" 
+        :current-page.sync="currentPage"
+        @current-change="changePage">
         </el-pagination>
     </div>
 </template>
@@ -16,6 +19,10 @@ export default {
         pageSize:{
             type:Number,
             default:10
+        },
+        currentPage:{
+            type: Number,
+            default:1,
         }
     },
     methods:{

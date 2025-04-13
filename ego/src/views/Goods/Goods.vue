@@ -39,7 +39,9 @@
 
      </div>
     <!-- 3.分页 -->
-     <MyPagination :total='total' :pageSize='pageSize' @changePage='changePage'/>
+     <MyPagination :total='total' 
+     :pageSize='pageSize' 
+     @changePage='changePage'/>
      <!--4.显示弹框组件 操作子组件 1。父传子 2.children 3.ref-->
      <!--<GoodsDialog :dialogVisible='dialogVisible' @changeDialog='changeDialog'/>-->
      <GoodsDialog ref='dialog'/>
@@ -64,6 +66,7 @@ export default {
       type:1,
       list:[],
       dialogVisible:false,
+      currentPage:1,//选中的高亮页码
     };
   },
   methods:{
@@ -78,6 +81,7 @@ export default {
     },
     //分页页码
     changePage(num){
+      this.currentPage=num;
      if(this.type==1){
       this.http(num);//商品列表分页
      }else{
@@ -93,9 +97,10 @@ export default {
         return;
       }
       this.$api.getSearch({
-        search:val
+        search:val,
       }).then(res=>{
         console.log('搜索---',res.data);
+            this.currentPage=1;
         //特殊处理
         if(res.data.status===200){
           this.list=res.data.result;//获取搜索总数据条数---进行分割
