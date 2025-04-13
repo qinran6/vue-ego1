@@ -14,6 +14,9 @@ const Order=()=>import('../views/Order/index.vue')
 const OrderList=()=>import('../views/Order/OrderList/index.vue')
 const OrderBack=()=>import('../views/Order/OrderBack/index.vue')
 
+//子级路由
+const AddGoods=()=>import('../views/Goods/AddGoods.vue')
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -30,6 +33,11 @@ const routes = [
         path:'/goods',
         name:'Goods',
         component:Goods
+      },
+      {
+        path:'/add-goods',
+        name:'AddGoods',
+        component:AddGoods
       },
       {
         path:'/params',

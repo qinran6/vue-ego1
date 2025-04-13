@@ -5,7 +5,10 @@
       <!--change	仅在输入框失去焦点或用户按下回车时触发-->
       <el-input @change="searchInp" v-model="input" placeholder="请输入内容"></el-input>
       <el-button type="primary">查询</el-button>
-      <el-button type="primary">添加</el-button>
+      <el-button type="primary">
+        <router-link to='/add-goods' style="color:#fff">页面添加</router-link>
+      </el-button>
+      <el-button type="primary" @click="AddGoods"> 添加  </el-button>
      </div>
     <!-- 表格区域展示视图数据 -->
      <div class="wrapper">
@@ -42,6 +45,7 @@
 
 <script>
 import MyPagination from '../../components/MyPagination.vue'
+import AddGoods from './AddGoods.vue';
 export default {
   components:{
     MyPagination
