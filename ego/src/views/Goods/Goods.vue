@@ -2,7 +2,8 @@
   <div class="goods">
     <!-- 搜素区域 -->
      <div class="header">
-      <el-input v-model="input" placeholder="请输入内容"></el-input>
+      <!--change	仅在输入框失去焦点或用户按下回车时触发-->
+      <el-input @change="searchInp" v-model="input" placeholder="请输入内容"></el-input>
       <el-button type="primary">查询</el-button>
       <el-button type="primary">添加</el-button>
      </div>
@@ -50,14 +51,50 @@ export default {
       input:'',
       tableData:[],
       total:10,
-      pageSize:1
+      pageSize:1,
+      type:1,
+      list:[],
     };
   },
   methods:{
     //分页页码
     changePage(num){
-      this.http(num);
+     if(this.type==1){
+      this.http(num);//商品列表分页
+     }else{
+      //搜索分页 1 2 list=[0,1,2,3,4,5,6,7,8] 0-3 3-6 6-9
+      console.log('搜索的分页处理---');
+      this.tableData=this.list.slice((num-1)*3,num*3);
+     }
     },
+    //搜索，查询数据
+    searchInp(val){
+      if(!val){
+        this.http(1);
+        return;
+      }
+      this.$api.getSearch({
+        search:val
+      }).then(res=>{
+        console.log('搜索---',res.data);
+        //特殊处理
+        if(res.data.status===200){
+          this.list=res.data.result;//获取搜索总数据条数---进行分割
+          //假设需要分页，处理分页
+          this.total=res.data.result.length;
+          this.pageSize=3;
+          this.tableData=res.data.result.slice(0,3);
+          this.type=2;
+        }
+        else {
+          this.tableData=[];
+          this.total=1;
+          this.pageSize=1;
+          this.type=1;
+        }
+      })
+    },
+
     // 编辑操作
     handleEdit(){},
     // 删除操作
