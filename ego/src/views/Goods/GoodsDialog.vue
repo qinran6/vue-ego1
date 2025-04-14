@@ -9,7 +9,7 @@
     <el-dialog
   title="添加商品" :visible.sync="dialogVisible" width="70%">
   <!--内容区域-->
-  <el-form :model="ruleForm" 
+  <el-form :model="goodsForm" 
   :rules="rules" 
   ref="ruleForm" 
   label-width="100px" 
@@ -17,17 +17,17 @@
   >
   <el-form-item label="类目选择" prop="category">
     <el-button type='primary' @click="innerVisible=true">类目选择</el-button>
-    <span>{{ruleForm.category}}</span>
+    <span>{{goodsForm.category}}</span>
   </el-form-item>
 
   <el-form-item label="商品名称" prop="title">
-    <el-input v-model="ruleForm.title"></el-input>
+    <el-input v-model="goodsForm.title"></el-input>
   </el-form-item>
   <el-form-item label="商品价格" prop="price">
-    <el-input v-model="ruleForm.price"></el-input>
+    <el-input v-model="goodsForm.price"></el-input>
   </el-form-item>
   <el-form-item label="商品数量" prop="num">
-    <el-input v-model="ruleForm.num"></el-input>
+    <el-input v-model="goodsForm.num"></el-input>
   </el-form-item>
   <el-form-item label="发布时间" required>
     <el-col :span="11">
@@ -35,7 +35,7 @@
         <el-date-picker 
         type="date" 
         placeholder="选择日期" 
-        v-model="ruleForm.date1" 
+        v-model="goodsForm.date1" 
         style="width: 100%;"
         ></el-date-picker>
       </el-form-item>
@@ -43,12 +43,12 @@
     <el-col class="line" :span="2">-</el-col>
     <el-col :span="11">
       <el-form-item prop="date2">
-        <el-time-picker placeholder="选择时间" v-model="ruleForm.date2" style="width: 100%;"></el-time-picker>
+        <el-time-picker placeholder="选择时间" v-model="goodsForm.date2" style="width: 100%;"></el-time-picker>
       </el-form-item>
     </el-col>
   </el-form-item>
   <el-form-item label="商品卖点" prop="sellPoint">
-    <el-input v-model="ruleForm.sellPoint"></el-input>
+    <el-input v-model="goodsForm.sellPoint"></el-input>
   </el-form-item>
   <el-form-item label="商品图片" prop="image">
     <el-button type='primary'>上传图片</el-button>
@@ -97,7 +97,7 @@ export default {
         dialogVisible:false,//外弹框
         innerVisible:false,//内弹框
         treeData:{},//接受tree的数据
-        ruleForm: {//表单容器-对象
+        goodsForm: {//表单容器-对象
           title: '',
           price: '',
           num: '',
@@ -124,7 +124,7 @@ export default {
       showtreeData(){
         this.innerVisible=false;
         //显示数据
-        this.ruleForm.category=this.treeData.name
+        this.goodsForm.category=this.treeData.name
       },
       //获取Tree数据
       sendTreeData(val){
