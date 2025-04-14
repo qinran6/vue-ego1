@@ -17,6 +17,7 @@
   >
   <el-form-item label="类目选择" prop="category">
     <el-button type='primary' @click="innerVisible=true">类目选择</el-button>
+    <span>{{ruleForm.category}}</span>
   </el-form-item>
 
   <el-form-item label="商品名称" prop="title">
@@ -72,11 +73,11 @@
       title="类目选择"
       :visible.sync="innerVisible"
       append-to-body>
-      <TreeGoods/>
 
+      <TreeGoods @sendTreeData='sendTreeData'/>
       <span slot="footer" class="dialog-footer">
     <el-button @click="innerVisible=false">取 消</el-button>
-    <el-button type="primary" @click="innerVisible=false">确 定</el-button>
+    <el-button type="primary" @click="showtreeData">确 定</el-button>
   </span>
     </el-dialog>
 
@@ -95,6 +96,7 @@ export default {
         return {
         dialogVisible:false,//外弹框
         innerVisible:false,//内弹框
+        treeData:{},//接受tree的数据
         ruleForm: {//表单容器-对象
           title: '',
           price: '',
@@ -118,6 +120,17 @@ export default {
         }
     },
     methods:{
+      //显示tree数据
+      showtreeData(){
+        this.innerVisible=false;
+        //显示数据
+        this.ruleForm.category=this.treeData.name
+      },
+      //获取Tree数据
+      sendTreeData(val){
+        console.log('tree数据',val);
+        this.treeData=val;
+      },
         //自定义事件 通知父组件--修改dialogVisible
         close(){
             this.$emit('changeDialog')

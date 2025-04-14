@@ -10,8 +10,8 @@
   :props="props"
   :load="loadNode"
   lazy
- 
-  accordion>
+  accordion
+  @node-click='nodeClick'>
 </el-tree>
 </template>
 
@@ -27,13 +27,17 @@
       };
     },
     methods: {
+      //点击Tree获取数据
+      nodeClick(data,node){
+        console.log(data,node);
+        //传递数据到父组件
+        this.$emit('sendTreeData',data)
+      },
       loadNode(node, resolve) {//resolve成功数据结果
-        console.log('node',node);
         if (node.level === 0) {
           //进入页面获取第一层tree数据
           this.$api.getSelectCategory()
           .then(res=>{
-            console.log(res.data);       
             return resolve(res.data.result);
           })          
         }
@@ -42,8 +46,7 @@
           this.$api.getSelectCategory({
             id:node.data.cid
           })
-          .then(res=>{
-            console.log('二級的Tree',res.data);     
+          .then(res=>{   
             if(res.data.status===200){
               return resolve(res.data.result);
             }else{
