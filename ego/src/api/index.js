@@ -14,6 +14,10 @@ const api={
         return axios.get(base.search,{params})
     },
 
+    //获取类目选择
+    getSelectCategory(params){
+        return axios.get(base.selectCategory,{params})
+    },
 }
 
 export default api
