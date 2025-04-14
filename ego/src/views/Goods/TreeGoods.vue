@@ -25,23 +25,16 @@
       };
     },
     methods: {
-      loadNode(node, resolve) {
-        console.log('load--自动执行');
+      loadNode(node, resolve) {//resolve成功数据结果
+  
         if (node.level === 0) {
-          return resolve([{ title: 'region' }]);
+          //进入页面获取第一层tree数据
+          return resolve([{ title: '一级菜单1' },{ title: '一级菜单2' }]);
         }
-        if (node.level > 1) return resolve([]);
-
-        setTimeout(() => {
-          const data = [{
-            title: 'leaf',
-            leaf: true
-          }, {
-            title: 'zone'
-          }];
-
-          resolve(data);
-        }, 500);
+        if (node.level >= 1){
+          //请求当前的点击的tree下面的数据
+          return resolve([]);
+        }
       }
     }
   };

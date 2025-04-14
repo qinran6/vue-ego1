@@ -73,6 +73,11 @@
       :visible.sync="innerVisible"
       append-to-body>
       <TreeGoods/>
+
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="innerVisible=false">取 消</el-button>
+    <el-button type="primary" @click="innerVisible=false">确 定</el-button>
+  </span>
     </el-dialog>
 
 </el-dialog>
