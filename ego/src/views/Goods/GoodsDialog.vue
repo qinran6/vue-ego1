@@ -52,6 +52,7 @@
   </el-form-item>
   <el-form-item label="商品图片" prop="image">
     <el-button type='primary' @click="innerVisibleImg = true">上传图片</el-button>
+    <img :src="goodsForm.image" height="200px" style="margin-left: 10px;" alt=""/>
   </el-form-item>
   <el-form-item label="商品描述" prop="descs">
     <textarea name="" id="" cols="30" rows="10"></textarea>
@@ -88,10 +89,10 @@
       :visible.sync="innerVisibleImg"
       append-to-body>
 
-      <UploadImg/>
+      <UploadImg @sendImg='sendImg'/>
       <span slot="footer" class="dialog-footer">
         <el-button @click="innerVisibleImg=false">取 消</el-button>
-        <el-button type="primary" @click="innerVisibleImg= false">确 定</el-button>
+        <el-button type="primary" @click="showImg">确 定</el-button>
       </span>
     </el-dialog>
 
@@ -114,6 +115,7 @@ export default {
         innerVisible:false,//内弹框
         innerVisibleImg:false,//图片弹框
         treeData:{},//接受tree的数据
+        imgUrl:"",
         goodsForm: {//表单容器-对象
           title: '',
           price: '',
@@ -137,6 +139,20 @@ export default {
         }
     },
     methods:{
+      /* 
+        显示图片的地址
+      */
+      sendImg(val){
+        console.log("显示图片的地址",val);
+        this.imgUrl = val;
+      },
+      /* 
+        显示图片--确定按钮
+      */
+     showImg(){
+        this.innerVisibleImg = false;
+        this.goodsForm.image = this.imgUrl;
+     },
       //显示tree数据
       showtreeData(){
         this.innerVisible=false;

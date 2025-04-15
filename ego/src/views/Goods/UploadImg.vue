@@ -41,6 +41,13 @@ export default {
       /* 上传成功的函数 */
       successUpload(response,file,fileList){
         console.log('上传成功',response,file,fileList);
+        this.$message({
+          message: '恭喜你，图片上传成功',
+          type: 'success'
+        });
+        //把成功的数据接口 response 传递给父组件
+        let imgUrl = base.host +'/'+ response.url.slice(7);
+        this.$emit('sendImg',imgUrl)
       },
       handleRemove(file, fileList) {
         console.log(file, fileList);
