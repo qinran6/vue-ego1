@@ -51,7 +51,7 @@
     <el-input v-model="goodsForm.sellPoint"></el-input>
   </el-form-item>
   <el-form-item label="商品图片" prop="image">
-    <el-button type='primary'>上传图片</el-button>
+    <el-button type='primary' @click="innerVisibleImg = true">上传图片</el-button>
   </el-form-item>
   <el-form-item label="商品描述" prop="descs">
     <textarea name="" id="" cols="30" rows="10"></textarea>
@@ -81,21 +81,38 @@
   </span>
     </el-dialog>
 
+    <!--2.内弹框 --- 上传图片-->
+    <el-dialog
+      width="40%"
+      title="上传图片"
+      :visible.sync="innerVisibleImg"
+      append-to-body>
+
+      <UploadImg/>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="innerVisibleImg=false">取 消</el-button>
+        <el-button type="primary" @click="innerVisibleImg= false">确 定</el-button>
+      </span>
+    </el-dialog>
+
 </el-dialog>
   </div>
 </template>
 
 <script>
 import TreeGoods from './TreeGoods.vue';
+import UploadImg from './UploadImg.vue';
 export default {
    // props:["dialogVisible"],
    components:{
-    TreeGoods
+    TreeGoods,
+    UploadImg
    },
     data(){
         return {
         dialogVisible:false,//外弹框
         innerVisible:false,//内弹框
+        innerVisibleImg:false,//图片弹框
         treeData:{},//接受tree的数据
         goodsForm: {//表单容器-对象
           title: '',
