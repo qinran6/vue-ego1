@@ -1,6 +1,8 @@
 //搭建express 服务
 const express=require('express')
 const app=express()
+//post 请求表单数据
+app.use(express.urlencoded({ extended: true }))
 //路由
 const router=require('./router')
 
