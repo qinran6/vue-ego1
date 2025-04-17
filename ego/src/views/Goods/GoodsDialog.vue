@@ -55,18 +55,14 @@
     <img :src="goodsForm.image" height="200px" style="margin-left: 10px;" alt=""/>
   </el-form-item>
   <el-form-item label="商品描述" prop="descs">
-    <WangEditor/>
-  </el-form-item>
-  <el-form-item>
-    <el-button type="primary" @click="submitForm('ruleForm')"
-    >确定</el-button>
-    <el-button @click="resetForm('ruleForm')">重置</el-button>
+    <WangEditor @sendEditor='sendEditor'/>
   </el-form-item>
 </el-form>
+
   <!--弹框底部区域-->
   <span slot="footer" class="dialog-footer">
     <el-button @click="dialogVisible=false">取 消</el-button>
-    <el-button type="primary" @click="dialogVisible=false">确 定</el-button>
+    <el-button type="primary" @click="submitForm">确 定</el-button>
   </span>
   <!--1.内弹框---类目选择-->
   <el-dialog
@@ -142,6 +138,12 @@ export default {
     },
     methods:{
       /* 
+        接受wangeditor数据
+      */
+     sendEditor(val){
+      this.goodsForm.descs = val;
+     },
+      /* 
         显示图片的地址
       */
       sendImg(val){
@@ -170,10 +172,12 @@ export default {
         close(){
             this.$emit('changeDialog')
         },
-        submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
+        submitForm() {
+        this.$refs.ruleForm.validate((valid) => {
           if (valid) {
-            alert('submit!');
+
+            console.log('获取输入的信息',this.goodsForm);
+            
           } else {
             console.log('error submit!!');
             return false;
