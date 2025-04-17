@@ -55,7 +55,7 @@
     <img :src="goodsForm.image" height="200px" style="margin-left: 10px;" alt=""/>
   </el-form-item>
   <el-form-item label="商品描述" prop="descs">
-    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <WangEditor/>
   </el-form-item>
   <el-form-item>
     <el-button type="primary" @click="submitForm('ruleForm')"
@@ -103,11 +103,13 @@
 <script>
 import TreeGoods from './TreeGoods.vue';
 import UploadImg from './UploadImg.vue';
+import WangEditor from './WangEditor.vue'
 export default {
    // props:["dialogVisible"],
    components:{
     TreeGoods,
-    UploadImg
+    UploadImg,
+    WangEditor
    },
     data(){
         return {
