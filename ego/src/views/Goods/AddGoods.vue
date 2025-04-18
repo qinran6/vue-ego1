@@ -53,7 +53,7 @@
   <el-form-item label="商品图片" prop="image">
     <el-button type='primary'>上传图片</el-button>
   </el-form-item>
-  <el-form-item label="商品描述" prop="descs">
+  <el-form-item label="商品描述" prop="desc">
     <textarea name="" id="" cols="30" rows="10"></textarea>
   </el-form-item>
   <el-form-item>

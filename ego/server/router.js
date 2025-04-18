@@ -164,9 +164,10 @@ router.get("/backend/item/insertTbItem", (req, res) => {
     var paramsInfo = req.query.paramsInfo || "";
     var image = req.query.image || "";
 
-    const sql = "insert into project values (null,?,?,?,?,?,?,?,'',1,'','',?,?)"
-    var arr = [title, image, sellPoint, price, cid, category, num, desc, paramsInfo];
+    const sql = "insert into project values (null,?,?,?,?,? ,? ,'',1,'',?,?)"
+    var arr = [title, image, sellPoint, price, cid,  num, category, desc, paramsInfo];
     sqlFn(sql, arr, result => {
+        console.log(123);
         if (result.affectedRows > 0) {
             res.send({
                 status: 200,
@@ -223,7 +224,7 @@ router.get("/batchDelete", (req, res) => {
         // console.log(sql);
     }
     fun(arr)
-    sqlFn(sql, null, result => {
+    sqlFun(sql, null, result => {
         if (result.affectedRows > 0) {
             res.send({
                 status: 200,

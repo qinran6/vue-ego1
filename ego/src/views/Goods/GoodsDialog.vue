@@ -179,9 +179,9 @@ export default {
           if (valid) {
             console.log('获取输入的信息',this.goodsForm);
             //title cid  category sellPoint price num descs paramsInfo image
-            let {title,cid,category,sellPoint,price,num,descs,image} = this.goodsForm;
+            let {title,cid,category,sellPoint,price,num,desc,image} = this.goodsForm;
             this.$api.addGoods({
-              title,cid,category,sellPoint,price,num,descs,image
+              title,cid,category,sellPoint,price,num,desc,image
             })
             .then((res) => {
                 console.log("添加---实现---", res.data);
@@ -193,7 +193,7 @@ export default {
                     type: "success",
                   });
                   //清空表单
-                  this.clearForm();
+                  //this.clearForm();
                 } else {
                   this.$message.error("错了哦，这是一条错误消息");
                 }
