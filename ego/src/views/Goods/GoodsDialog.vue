@@ -55,7 +55,7 @@
     <img :src="goodsForm.image" height="200px" style="margin-left: 10px;" alt=""/>
   </el-form-item>
   <el-form-item label="商品描述" prop="descs">
-    <WangEditor @sendEditor='sendEditor'/>
+    <WangEditor ref='myEditor' @sendEditor='sendEditor'/>
   </el-form-item>
 </el-form>
 
@@ -179,21 +179,25 @@ export default {
           if (valid) {
             console.log('获取输入的信息',this.goodsForm);
             //title cid  category sellPoint price num descs paramsInfo image
-            let {title,cid,category,sellPoint,price,num,desc,image} = this.goodsForm;
+            let {title,cid,category,sellPoint,price,num,descs,image} = this.goodsForm;
             this.$api.addGoods({
-              title,cid,category,sellPoint,price,num,desc,image
+              title,cid,category,sellPoint,price,num,descs,image
             })
             .then((res) => {
                 console.log("添加---实现---", res.data);
                 if (res.data.status === 200) {
                   //成功
+                  this.dialogVisible = false;//关闭弹框
                   this.$parent.http(1); //更新父组件列表数据
                   this.$message({
                     message: "恭喜你，添加商品成功",
                     type: "success",
                   });
-                  //清空表单
+                  //4.清空表单 4.1 使用element里面的重置表单 4.2自己手动初始化goodsForm
                   //this.clearForm();
+                  this.$refs.ruleForm.resetFields();
+                  //单独-清空编辑器内容--editor.txt.clear()
+                  this.$refs.myEditor.editor.txt.clear();
                 } else {
                   this.$message.error("错了哦，这是一条错误消息");
                 }
