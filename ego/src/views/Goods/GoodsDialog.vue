@@ -115,15 +115,16 @@ export default {
         treeData:{},//接受tree的数据
         imgUrl:"",
         goodsForm: {//表单容器-对象
-          title: '',
-          price: '',
-          num: '',
-          sellPoint: '',
-          image: '',
-          descs: '',
-          category: '',
-          date1:'',//商品时间
-          date2:'',
+          title: "",
+          price: "",
+          num: "",
+          sellPoint: "",
+          image: "",
+          descs: "",
+          cid:"",//类目的id
+          category: "",
+          date1:"",//商品时间
+          date2:"",
         },
         rules: {//校验规则
           title: [
@@ -161,7 +162,8 @@ export default {
       showtreeData(){
         this.innerVisible=false;
         //显示数据
-        this.goodsForm.category=this.treeData.name
+        this.goodsForm.category=this.treeData.name;
+        this.goodsForm.cid=this.treeData.cid;
       },
       //获取Tree数据
       sendTreeData(val){
@@ -175,8 +177,27 @@ export default {
         submitForm() {
         this.$refs.ruleForm.validate((valid) => {
           if (valid) {
-
             console.log('获取输入的信息',this.goodsForm);
+            //title cid  category sellPoint price num descs paramsInfo image
+            let {title,cid,category,sellPoint,price,num,descs,image} = this.goodsForm;
+            this.$api.addGoods({
+              title,cid,category,sellPoint,price,num,descs,image
+            })
+            .then((res) => {
+                console.log("添加---实现---", res.data);
+                if (res.data.status === 200) {
+                  //成功
+                  this.$parent.http(1); //更新父组件列表数据
+                  this.$message({
+                    message: "恭喜你，添加商品成功",
+                    type: "success",
+                  });
+                  //清空表单
+                  this.clearForm();
+                } else {
+                  this.$message.error("错了哦，这是一条错误消息");
+                }
+              });
             
           } else {
             console.log('error submit!!');

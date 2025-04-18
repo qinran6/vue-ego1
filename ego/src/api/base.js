@@ -1,5 +1,7 @@
 //接口路径配置
 
+import AddGoods from "@/views/Goods/AddGoods.vue";
+
 //import { search } from "server/router";
 
 const base={
@@ -8,6 +10,7 @@ const base={
     search:'/api/api/search',//商品搜索
     selectCategory:'/api/api/backend/itemCategory/selectItemCategoryByParentId',//类目选择
     uploadUrl:'/api/api/upload',//图片上传 post请求
+    addGoods:'/api/api/backend/item/insertTbItem',//添加商品
 }
 
 export default base;
