@@ -22,9 +22,10 @@
         <el-table-column prop="image" label="商品图片" show-overflow-tooltip></el-table-column>
         <el-table-column prop="sellPoint" label="商品卖点" show-overflow-tooltip></el-table-column>
         <el-table-column prop="descs" label="商品描述" show-overflow-tooltip></el-table-column>
-        <el-table-column  label="操作" width="180">
+        <el-table-column  label="操作" width="280">
           <!-- <template slot-scope="scope"> -->
           <template #default="scope">
+            <el-button size="mini">查看</el-button>
             <el-button
               size="mini"
               @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
@@ -122,7 +123,37 @@ export default {
     // 编辑操作
     handleEdit(){},
     // 删除操作
-    handleDelete(){},
+    handleDelete(index,row){
+      console.log('删除',index,row);
+      this.$confirm('此操作将永久删除该商品, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        })
+        .then(res=>{
+          //请求接口---
+          this.$api.deleteGoods({
+            id:row.id
+          })
+          .then(res=>{
+            console.log('删除',res.data);
+            if(res.data.status === 200){
+              this.$message({
+              type: 'success',
+              message: '删除成功!'
+              });
+              //视图更新
+              this.http(1);
+            }
+          });
+        })
+        .catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
+    },
 
     http(page){
       this.$api.getGoodsList({

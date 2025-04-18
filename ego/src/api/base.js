@@ -11,6 +11,7 @@ const base={
     selectCategory:'/api/api/backend/itemCategory/selectItemCategoryByParentId',//类目选择
     uploadUrl:'/api/api/upload',//图片上传 post请求
     addGoods:'/api/api/backend/item/insertTbItem',//添加商品
+    deleteGoods:'/api/api/backend/item/deleteItemById',//删除商品
 }
 
 export default base;

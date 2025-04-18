@@ -27,6 +27,12 @@ const api={
             params
         })
    },
+   /* 
+    删除商品
+   */
+   deleteGoods(params){
+    return axios.get(base.deleteGoods,{params})
+   }
 }
 
 export default api
