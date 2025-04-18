@@ -7,7 +7,9 @@
 
     -->
     <el-dialog
-  title="添加商品" :visible.sync="dialogVisible" width="70%">
+      title="添加商品" :visible.sync="dialogVisible" width="70%"
+      :before-close="clearForm"
+  >
   <!--内容区域-->
   <el-form :model="goodsForm" 
   :rules="rules" 
@@ -61,7 +63,7 @@
 
   <!--弹框底部区域-->
   <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisible=false">取 消</el-button>
+    <el-button @click="clearForm">取 消</el-button>
     <el-button type="primary" @click="submitForm">确 定</el-button>
   </span>
   <!--1.内弹框---类目选择-->
@@ -187,17 +189,13 @@ export default {
                 console.log("添加---实现---", res.data);
                 if (res.data.status === 200) {
                   //成功
-                  this.dialogVisible = false;//关闭弹框
                   this.$parent.http(1); //更新父组件列表数据
                   this.$message({
                     message: "恭喜你，添加商品成功",
                     type: "success",
                   });
-                  //4.清空表单 4.1 使用element里面的重置表单 4.2自己手动初始化goodsForm
-                  //this.clearForm();
-                  this.$refs.ruleForm.resetFields();
-                  //单独-清空编辑器内容--editor.txt.clear()
-                  this.$refs.myEditor.editor.txt.clear();
+                  //清空表单
+                  this.clearForm();
                 } else {
                   this.$message.error("错了哦，这是一条错误消息");
                 }
@@ -209,8 +207,15 @@ export default {
           }
         });
       },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
+      /* 
+        清空表单数据列表
+      */
+      clearForm(formName) {
+        this.dialogVisible = false;//关闭弹框
+        //清空表单 1 使用element里面的重置表单 2自己手动初始化goodsForm
+        this.$refs.ruleForm.resetFields();
+        //单独-清空编辑器内容--editor.txt.clear()
+        this.$refs.myEditor.editor.txt.clear();
       },
 
     }
