@@ -77,6 +77,7 @@ export default {
       //this.dialogVisible=true;
       //修改子组件变量数据
       this.$refs.dialog.dialogVisible =true;
+      this.title='添加商品';
     },
     changeDialog(){
       this.dialogVisible=false;
