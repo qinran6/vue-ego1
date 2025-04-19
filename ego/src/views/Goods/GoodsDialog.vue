@@ -129,6 +129,7 @@ export default {
         treeData:{},//接受tree的数据
         imgUrl:"",
         goodsForm: {//表单容器-对象
+          id:'',
           title: "",
           price: "",
           num: "",
@@ -204,11 +205,14 @@ export default {
           if (valid) {
             console.log('获取输入的信息',this.goodsForm);
             //title cid  category sellPoint price num descs paramsInfo image
-            let {title,cid,category,sellPoint,price,num,descs,image} = this.goodsForm;
-            this.$api.addGoods({
+            let {id,title,cid,category,sellPoint,price,num,descs,image} = this.goodsForm;
+            //判断当前确定按钮类型
+            if(this.title === '添加商品'){
+              console.log('添加商品');
+              this.$api.addGoods({
               title,cid,category,sellPoint,price,num,descs,image
-            })
-            .then((res) => {
+              })
+              .then((res) => {
                 console.log("添加---实现---", res.data);
                 if (res.data.status === 200) {
                   //成功
@@ -223,7 +227,27 @@ export default {
                   this.$message.error("错了哦，这是一条错误消息");
                 }
               });
-            
+            }else{
+              console.log('编辑商品');
+              this.$api.updateGoods({
+                id,title,cid,category,sellPoint,price,num,descs,image
+              })
+              .then((res)=>{
+                console.log(res.data);
+                if (res.data.status === 200) {
+                  //成功
+                  this.$parent.http(1); //更新父组件列表数据
+                  this.$message({
+                    message: "恭喜你，修改商品成功",
+                    type: "success",
+                  });
+                  //清空表单
+                  this.clearForm();
+                } else {
+                  this.$message.error("修改失败");
+                }
+              });
+            }
           } else {
             console.log('error submit!!');
             return false;

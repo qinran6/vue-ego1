@@ -12,6 +12,7 @@ const base={
     uploadUrl:'/api/api/upload',//图片上传 post请求
     addGoods:'/api/api/backend/item/insertTbItem',//添加商品
     deleteGoods:'/api/api/backend/item/deleteItemById',//删除商品
+    updateGoods:'/api/api/backend/item/updateTbItem',//编辑商品
 }
 
 export default base;
