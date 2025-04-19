@@ -103,7 +103,18 @@ import TreeGoods from './TreeGoods.vue';
 import UploadImg from './UploadImg.vue';
 import WangEditor from './WangEditor.vue'
 export default {
-    props:['title'],  
+    props:{
+      title:{
+        type:String,
+        default:'添加商品'
+      },
+      rowData:{
+        type:Object,
+        default:function(){
+          return {}
+        }
+      }
+    },  
   //props:["dialogVisible"],
     components:{
     TreeGoods,
