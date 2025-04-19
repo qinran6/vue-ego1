@@ -151,6 +151,17 @@ export default {
         },
         }
     },
+    //监听器---
+    watch:{
+      rowData(val){
+        console.log('监听数据变化',val);
+        this.goodsForm = val;
+        //设置富文本编辑的数据内容
+        this.$nextTick(()=>{
+          this.$refs.myEditor.editor.txt.html(val.descs)
+        });
+      },
+    },
     methods:{
       /* 
         接受wangeditor数据
@@ -225,7 +236,19 @@ export default {
       clearForm(formName) {
         this.dialogVisible = false;//关闭弹框
         //清空表单 1 使用element里面的重置表单 2自己手动初始化goodsForm
-        this.$refs.ruleForm.resetFields();
+        //this.$refs.ruleForm.resetFields();
+        this.goodsForm={
+          title: "",
+          price: "",
+          num: "",
+          sellPoint: "",
+          image: "",
+          descs: "",
+          cid:"",//类目的id
+          category: "",
+          date1:"",//商品时间
+          date2:"",
+        }
         //单独-清空编辑器内容--editor.txt.clear()
         this.$refs.myEditor.editor.txt.clear();
       },

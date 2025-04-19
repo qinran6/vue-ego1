@@ -124,13 +124,13 @@ export default {
     },
 
     // 编辑操作
-    handleEdit(index,row){
+    handleEdit(index,row){//row={}
       //1.点击编辑按钮 显示弹框
       //2.弹框回显数据展示 当前行的数据
       this.$refs.dialog.dialogVisible = true;
       this.title='编辑商品';
-      //this.rowData= row;
-      this.$refs.dialog.goodsForm = row;
+      this.rowData={...row};
+      //this.$refs.dialog.goodsForm = row;//方法1:
     },
     // 删除操作
     handleDelete(index,row){
