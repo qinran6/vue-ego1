@@ -7,7 +7,7 @@
 
     -->
     <el-dialog
-      title="添加商品" :visible.sync="dialogVisible" width="70%"
+      :title="title" :visible.sync="dialogVisible" width="70%"
       :before-close="clearForm"
   >
   <!--内容区域-->
@@ -103,8 +103,9 @@ import TreeGoods from './TreeGoods.vue';
 import UploadImg from './UploadImg.vue';
 import WangEditor from './WangEditor.vue'
 export default {
-   // props:["dialogVisible"],
-   components:{
+    props:['title'],  
+  //props:["dialogVisible"],
+    components:{
     TreeGoods,
     UploadImg,
     WangEditor
