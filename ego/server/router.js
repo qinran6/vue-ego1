@@ -164,8 +164,8 @@ router.get("/backend/item/insertTbItem", (req, res) => {
     var paramsInfo = req.query.paramsInfo || "";
     var image = req.query.image || "";
 
-    const sql = "insert into project values (null,?,?,?,?,? ,? ,'',1,'',?,?)"
-    var arr = [title, image, sellPoint, price, cid,  num, category, desc, paramsInfo];
+    const sql = "insert into project values (null,?,?,?,?,?,?,?,'',1,'','',?)"
+    var arr = [title, image, sellPoint, price, cid,category, num, desc];
     sqlFn(sql, arr, result => {
         console.log(123);
         if (result.affectedRows > 0) {
