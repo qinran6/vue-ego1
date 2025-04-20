@@ -45,7 +45,7 @@
      @changePage='changePage'/>
      <!--4.显示弹框组件 操作子组件 1。父传子 2.children 3.ref-->
      <!--<GoodsDialog :dialogVisible='dialogVisible' @changeDialog='changeDialog'/>-->
-     <GoodsDialog ref='dialog' :title="title" :rowData='rowData'/>
+     <GoodsDialog ref='dialog'/>
   </div>
 </template>
 
@@ -68,8 +68,6 @@ export default {
       list:[],
       dialogVisible:false,
       currentPage:1,//选中的高亮页码
-      title:'添加商品',
-      rowData:{},//当前行的数据对象
     };
   },
   methods:{
@@ -78,7 +76,6 @@ export default {
       //this.dialogVisible=true;
       //修改子组件变量数据
       this.$refs.dialog.dialogVisible =true;
-      this.title='添加商品';
     },
     changeDialog(){
       this.dialogVisible=false;
@@ -124,14 +121,7 @@ export default {
     },
 
     // 编辑操作
-    handleEdit(index,row){//row={}
-      //1.点击编辑按钮 显示弹框
-      //2.弹框回显数据展示 当前行的数据
-      this.$refs.dialog.dialogVisible = true;
-      this.title='编辑商品';
-      this.rowData={...row};
-      //this.$refs.dialog.goodsForm = row;//方法1:
-    },
+    handleEdit(){},
     // 删除操作
     handleDelete(index,row){
       console.log('删除',index,row);

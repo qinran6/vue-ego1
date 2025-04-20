@@ -257,8 +257,8 @@ router.get("/backend/item/updateTbItem", (req, res) => {
     var desc = req.query.descs || "";
     var paramsInfo = req.query.paramsInfo || "";
     var image = req.query.image || "";
-    var sql = "update project set title=?,sellPoint=?,price=?,cid=?,category=?,num=?,descs=?,image=? where id=?";
-    var arr = [title, sellPoint, price, cid, category, num, desc, image, id];
+    var sql = "update project set title=?,sellPoint=?,price=?,cid=?,category=?,num=?,descs=?,paramsInfo=?,image=? where id=?";
+    var arr = [title, sellPoint, price, cid, category, num, desc, paramsInfo, image, id];
     sqlFn(sql, arr, result => {
         if (result.affectedRows > 0) {
             res.send({
