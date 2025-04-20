@@ -7,7 +7,7 @@
 
     -->
     <el-dialog
-      title="添加商品" :visible.sync="dialogVisible" width="70%"
+      :title="title" :visible.sync="dialogVisible" width="70%"
       :before-close="clearForm"
   >
   <!--内容区域-->
@@ -103,8 +103,20 @@ import TreeGoods from './TreeGoods.vue';
 import UploadImg from './UploadImg.vue';
 import WangEditor from './WangEditor.vue'
 export default {
-   // props:["dialogVisible"],
-   components:{
+    props:{
+      title:{
+        type:String,
+        default:'添加商品'
+      },
+      rowData:{
+        type:Object,
+        default:function(){
+          return {}
+        }
+      }
+    },  
+  //props:["dialogVisible"],
+    components:{
     TreeGoods,
     UploadImg,
     WangEditor
@@ -117,6 +129,7 @@ export default {
         treeData:{},//接受tree的数据
         imgUrl:"",
         goodsForm: {//表单容器-对象
+          id:'',
           title: "",
           price: "",
           num: "",
@@ -138,6 +151,17 @@ export default {
          
         },
         }
+    },
+    //监听器---
+    watch:{
+      rowData(val){
+        console.log('监听数据变化',val);
+        this.goodsForm = val;
+        //设置富文本编辑的数据内容
+        this.$nextTick(()=>{
+          this.$refs.myEditor.editor.txt.html(val.descs)
+        });
+      },
     },
     methods:{
       /* 
@@ -181,11 +205,14 @@ export default {
           if (valid) {
             console.log('获取输入的信息',this.goodsForm);
             //title cid  category sellPoint price num descs paramsInfo image
-            let {title,cid,category,sellPoint,price,num,descs,image} = this.goodsForm;
-            this.$api.addGoods({
+            let {id,title,cid,category,sellPoint,price,num,descs,image} = this.goodsForm;
+            //判断当前确定按钮类型
+            if(this.title === '添加商品'){
+              console.log('添加商品');
+              this.$api.addGoods({
               title,cid,category,sellPoint,price,num,descs,image
-            })
-            .then((res) => {
+              })
+              .then((res) => {
                 console.log("添加---实现---", res.data);
                 if (res.data.status === 200) {
                   //成功
@@ -200,7 +227,27 @@ export default {
                   this.$message.error("错了哦，这是一条错误消息");
                 }
               });
-            
+            }else{
+              console.log('编辑商品');
+              this.$api.updateGoods({
+                id,title,cid,category,sellPoint,price,num,descs,image
+              })
+              .then((res)=>{
+                console.log(res.data);
+                if (res.data.status === 200) {
+                  //成功
+                  this.$parent.http(1); //更新父组件列表数据
+                  this.$message({
+                    message: "恭喜你，修改商品成功",
+                    type: "success",
+                  });
+                  //清空表单
+                  this.clearForm();
+                } else {
+                  this.$message.error("修改失败");
+                }
+              });
+            }
           } else {
             console.log('error submit!!');
             return false;
@@ -213,7 +260,19 @@ export default {
       clearForm(formName) {
         this.dialogVisible = false;//关闭弹框
         //清空表单 1 使用element里面的重置表单 2自己手动初始化goodsForm
-        this.$refs.ruleForm.resetFields();
+        //this.$refs.ruleForm.resetFields();
+        this.goodsForm={
+          title: "",
+          price: "",
+          num: "",
+          sellPoint: "",
+          image: "",
+          descs: "",
+          cid:"",//类目的id
+          category: "",
+          date1:"",//商品时间
+          date2:"",
+        }
         //单独-清空编辑器内容--editor.txt.clear()
         this.$refs.myEditor.editor.txt.clear();
       },
