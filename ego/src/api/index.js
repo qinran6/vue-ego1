@@ -32,6 +32,12 @@ const api={
    */
    deleteGoods(params){
     return axios.get(base.deleteGoods,{params})
+   },
+   /* 
+   编辑商品id
+   */
+   updateGoods(params){
+    return axios.get(base.updateGoods,{params})
    }
 }
 
