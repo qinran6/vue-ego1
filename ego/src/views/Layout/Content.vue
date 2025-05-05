@@ -5,7 +5,21 @@
        方法修改isCollapse的值，Content和Mymenu接收isCollapse的值进行对应的改变-->
       <i v-if='!isCollapse' @click="changeMenu" class="iconfont icon-right-indent"></i>
       <i v-else @click="changeMenu" class="iconfont icon-left-indent"></i>
-      顶部区域
+      <div class="header-right">
+        <el-dropdown>
+          <span class="el-dropdown-link" style="color: #fff;">
+            多语言<i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>简体中文</el-dropdown-item>
+            <el-dropdown-item>English</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
+        <div class="user"> 
+          欢迎：×××
+          <span>退出登陆</span>
+        </div>
+      </div>
     </div>
     <!-- 内容区域----路由出口 -->
     <div class="content">
@@ -38,4 +52,13 @@ export default {
     font-size: 24px;
   }
 }
+.header-right{
+  float: right;
+  padding-right: 20px;
+  display: flex;
+  .user{
+    margin-left: 20px;
+  }
+}
+
 </style>
