@@ -11,8 +11,8 @@
             多语言<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>简体中文</el-dropdown-item>
-            <el-dropdown-item>English</el-dropdown-item>
+            <el-dropdown-item command="zh">简体中文</el-dropdown-item>
+            <el-dropdown-item command="en">English</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
         <div class="user"> 
@@ -38,8 +38,9 @@ export default {
       // 点击切换按钮时 修改父组件的数据 isCollapse
       this.$emit('changeCollapse')
     },
-    clickLang(){
-      console.log('123');
+    clickLang(command){
+      console.log(command);
+      this.$i18n.locale=command;
     }
   }
 }
