@@ -9,10 +9,14 @@ import './assets/css/iconfont.css'
 import api from './api/index'
 Vue.prototype.$api=api;
 
+//导入语言
+import i18n from './lang/index'
+
 Vue.config.productionTip = false
 
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App)
 }).$mount('#app')

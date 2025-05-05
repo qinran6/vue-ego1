@@ -16,26 +16,35 @@
       </el-menu-item>
       <el-menu-item index="/">
         <i class="el-icon-menu"></i>
+        <!-- 
         <template v-slot:title>
         <span>首页</span>
         </template>
+        -->
         <!-- <span slot="title">首页</span> -->
+        <span slot="title">{{$t ("menu.home")}}</span>
       </el-menu-item>
 
       <el-menu-item index="/goods">
         <i class="el-icon-document"></i>
         <!-- <span slot="title">商品管理</span> -->
+        <!-- 
         <template v-slot:title>
         <span>商品管理</span>
         </template>
+        -->
+        <span slot="title">{{$t ("menu.goods")}}</span>
       </el-menu-item>
 
       <el-menu-item index="/params">
         <i class="el-icon-setting"></i>
         <!-- <span slot="title">规格参数</span> -->
+        <!-- 
         <template v-slot:title>
         <span>规格参数</span>
         </template>
+        -->
+        <span slot="title">{{$t ("menu.params")}}</span>
       </el-menu-item>
 
       <el-menu-item index="/advert">

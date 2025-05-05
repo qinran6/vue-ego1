@@ -62,3 +62,48 @@ wangEditor使用步骤：
 
 2. 安装
    1. npm install vue-i18n -S
+   2. main.js导入或者是单独的文件
+      import Vue from 'vue'
+      import VueI18n from 'vue-i18n'
+
+      Vue.use(VueI18n)
+3. 使用步骤
+   1.  如果使用模块系统 (例如通过 vue-cli)，则需要导入 Vue 和 VueI18n ，然后调用 Vue.use(VueI18n)。
+        // import Vue from 'vue'
+        // import VueI18n from 'vue-i18n'
+        //
+        // Vue.use(VueI18n)
+    2. 准备翻译的语言环境信息
+        const messages = {
+                en: {//英文
+                    home: {
+                        hello: 'hello world',
+                        xx:xx,
+                        ...
+                    },
+                    goods:{
+
+                    }
+                },
+                zh: {//中文
+                    home: {
+                        hello: '你好 世界',
+                        xx:xx,
+                        ...
+                    },
+                    goods:{
+                        
+                    }
+                }
+            }        
+    3.  通过选项创建 VueI18n 实例
+        const i18n = new VueI18n({
+            locale: 'en', // 设置地区
+            messages, // 设置地区信息
+        })            
+
+    4.  通过 `i18n` 选项创建 Vue 实例
+        new Vue({ i18n }).$mount('#app')
+
+    5. 使用语法：
+       <p>{{ $t("home.hello") }}</p>                
