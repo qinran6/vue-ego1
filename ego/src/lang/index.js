@@ -10,7 +10,11 @@ const messages = {
         menu:{
             home:'home',
             goods:'Goods Manage',
-            params:'Specification'
+            params:'Specification',
+            adclassify:'Advertising Categories',
+            management:'Order Management',
+            list:'Order List',
+            return:'Return Management',
         }
     },
     //2. 中文
@@ -18,7 +22,11 @@ const messages = {
         menu:{
             home:'首页',
             goods:'商品管理',
-            params:'规格参数'
+            params:'规格参数',
+            adclassify:'广告分类',
+            management:'订单管理',
+            list:'订单列表',
+            return:'退货管理',
         }
     }
     

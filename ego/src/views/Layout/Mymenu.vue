@@ -50,24 +50,30 @@
       <el-menu-item index="/advert">
         <i class="el-icon-setting"></i>
         <!-- <span slot="title">规格参数</span> -->
+        <!-- 
         <template v-slot:title>
         <span>广告分类</span>
         </template>
+        -->
+        <span slot="title">{{$t ("menu.adclassify")}}</span>
       </el-menu-item>
 
       <el-submenu index="/order">
         <template v-slot:title>
           <i class="el-icon-location"></i>
-          <span>订单管理</span>
+          <!-- <span>订单管理</span> -->
+          <span slot="title">{{$t ("menu.management")}}</span>
         </template>
         <el-menu-item-group>
           <el-menu-item index="/order/order-list">
             <i class="el-icon-setting"></i>
-            <span>订单列表</span>
+            <!-- <span>订单列表</span> -->
+            <span slot="title">{{$t ("menu.list")}}</span>
           </el-menu-item>
           <el-menu-item index="/order/order-back">
             <i class="el-icon-setting"></i>
-            <span>退货管理</span>
+            <!-- <span>退货管理</span> -->
+            <span slot="title">{{$t ("menu.return")}}</span>
           </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
