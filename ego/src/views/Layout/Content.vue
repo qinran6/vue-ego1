@@ -6,7 +6,7 @@
       <i v-if='!isCollapse' @click="changeMenu" class="iconfont icon-right-indent"></i>
       <i v-else @click="changeMenu" class="iconfont icon-left-indent"></i>
       <div class="header-right">
-        <el-dropdown>
+        <el-dropdown @command="clickLang">
           <span class="el-dropdown-link" style="color: #fff;">
             多语言<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
@@ -37,6 +37,9 @@ export default {
     changeMenu(){
       // 点击切换按钮时 修改父组件的数据 isCollapse
       this.$emit('changeCollapse')
+    },
+    clickLang(){
+      console.log('123');
     }
   }
 }
