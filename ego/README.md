@@ -106,4 +106,40 @@ wangEditor使用步骤：
         new Vue({ i18n }).$mount('#app')
 
     5. 使用语法：
-       <p>{{ $t("home.hello") }}</p>                
+       <p>{{ $t("home.hello") }}</p>
+
+### element 国际化
+1. 导入
+     import Element from 'element-ui'      
+
+2. 导入语言环境
+    import enLocale from 'element-ui/lib/locale/lang/en'
+    import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
+
+    目前 Element 内置了以下语言：
+        简体中文（zh-CN）
+        英语（en）
+        德语（de）
+        葡萄牙语（pt）
+        西班牙语（es）
+        丹麦语（da）
+        法语（fr）
+        ... 
+
+3. 配置语言环境
+   const messages = {
+        en: {
+            message: 'hello',
+            ...enLocale // 或者用 Object.assign({ message: 'hello' }, enLocale)
+        },
+        zh: {
+            message: '你好',
+            ...zhLocale // 或者用 Object.assign({ message: '你好' }, zhLocale)
+        }
+    }
+
+
+4. 配置使用
+    Vue.use(Element, {
+        i18n: (key, value) => i18n.t(key, value)
+    })

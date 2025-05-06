@@ -1,6 +1,8 @@
-import { Descriptions } from 'element-ui'
 import Vue from 'vue'
+import Element from 'element-ui'    
 import VueI18n from 'vue-i18n'
+import enLocale from 'element-ui/lib/locale/lang/en'
+import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 
 Vue.use(VueI18n)
 
@@ -38,7 +40,9 @@ const messages = {
             welcome:'Welcome:×××',
             quit:'Quit',
             lang:'language',
-        }
+        },
+        //导入element-ui里面的国际化语法
+        ...enLocale,
     },
     //2. 中文
     zh: {
@@ -72,7 +76,8 @@ const messages = {
             welcome:'欢迎:×××',
             quit:'退出登陆',
             lang:'多语言',
-        }
+        },
+        ...zhLocale
     }
     
 }
@@ -81,6 +86,11 @@ const messages = {
 const i18n = new VueI18n({
     locale: 'zh',//选中的语言
     messages,//语言环境
+})
+
+//兼容写法
+Vue.use(Element, {
+    i18n: (key, value) => i18n.t(key, value)
 })
 
 //3. 导出i18n 
