@@ -37,6 +37,7 @@ const messages = {
         register:{
             welcome:'Welcome:×××',
             quit:'Quit',
+            lang:'language',
         }
     },
     //2. 中文
@@ -70,6 +71,7 @@ const messages = {
         register:{
             welcome:'欢迎:×××',
             quit:'退出登陆',
+            lang:'多语言',
         }
     }
     

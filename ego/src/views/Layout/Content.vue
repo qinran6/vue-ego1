@@ -8,7 +8,7 @@
       <div class="header-right">
         <el-dropdown @command="clickLang">
           <span class="el-dropdown-link" style="color: #fff;">
-            多语言<i class="el-icon-arrow-down el-icon--right"></i>
+            {{$t ("register.lang")}}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="zh">简体中文</el-dropdown-item>
