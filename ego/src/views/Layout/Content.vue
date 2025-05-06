@@ -16,8 +16,8 @@
           </el-dropdown-menu>
         </el-dropdown>
         <div class="user"> 
-          欢迎：×××
-          <span>退出登陆</span>
+          <span>{{$t ("register.welcome")}}</span>
+          <span>{{$t ("register.quit")}}</span>
         </div>
       </div>
     </div>

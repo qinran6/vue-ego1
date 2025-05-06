@@ -4,11 +4,11 @@
      <div class="header">
       <!--change	仅在输入框失去焦点或用户按下回车时触发-->
       <el-input @change="searchInp" v-model="input" placeholder="请输入内容"></el-input>
-      <el-button type="primary">查询</el-button>
+      <el-button type="primary"><span>{{$t ("goods.inquire")}}</span></el-button>
       <el-button type="primary">
         <router-link to='/add-goods' style="color:#fff">页面添加</router-link>
       </el-button>
-      <el-button type="primary" @click="AddGoods">弹框添加 </el-button>
+      <el-button type="primary" @click="AddGoods"><span>{{$t ("goods.add")}}</span> </el-button>
      </div>
     <!--2.表格区域展示视图数据 -->
      <div class="wrapper">
@@ -25,15 +25,15 @@
         <el-table-column  label="操作" width="280">
           <!-- <template slot-scope="scope"> -->
           <template #default="scope">
-            <el-button size="mini">查看</el-button>
+            <el-button size="mini"><span>{{$t ("goods.check")}}</span></el-button>
             <el-button
               size="mini"
-              @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+              @click="handleEdit(scope.$index, scope.row)"><span>{{$t ("goods.compile")}}</span></el-button>
               
             <el-button
               size="mini"
               type="danger"
-              @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+              @click="handleDelete(scope.$index, scope.row)"><span>{{$t ("goods.delete")}}</span></el-button>
         </template>
       </el-table-column>
     </el-table>
