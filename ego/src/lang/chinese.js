@@ -1,0 +1,33 @@
+export default {
+    menu:{
+        ego:'易购后台管理系统',
+        home:'首页',
+        goods:'商品管理',
+        params:'规格参数',
+        adclassify:'广告分类',
+        management:'订单管理',
+        list:'订单列表',
+        return:'退货管理',
+    },
+    goods:{
+        inquire:'查询',
+        add:'添加',
+        check:'查看',
+        compile:'编辑',
+        delete:'删除',
+        id:'商品ID',
+        name:'商品名称',
+        price:'商品价格',
+        num:'商品数量',
+        specification:'规格类目',
+        photo:'商品照片',
+        point:'商品卖点',
+        description:'商品描述',
+        operation:'操作',
+    },
+    register:{
+        welcome:'欢迎:×××',
+        quit:'退出登陆',
+        lang:'多语言',
+    },
+}
