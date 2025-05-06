@@ -11,7 +11,7 @@
     >
       <el-menu-item>
         <template v-slot:title>
-        <span>易购后台管理系统</span>
+        <span slot="title">{{$t ("menu.ego")}}</span>
         </template>
       </el-menu-item>
       <el-menu-item index="/">
