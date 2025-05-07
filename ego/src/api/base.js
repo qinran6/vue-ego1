@@ -14,7 +14,7 @@ const base={
     addGoods:'/api/api/backend/item/insertTbItem',//添加商品
     deleteGoods:'/api/api/backend/item/deleteItemById',//删除商品
     updateGoods:'/api/api/backend/item/updateTbItem',//编辑商品
-    Login:'/api/api/login',//登录接口
+    login:'/api/api/login',//登录接口
 }
 
 export default base;

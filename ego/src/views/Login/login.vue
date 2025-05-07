@@ -62,6 +62,8 @@ export default {
             username,password
           }).then(res=>{
             console.log('------',res.data);
+          }).catch((err) => {
+            console.log('error:  ', err);
           })
         } else {
           console.log('error submit!!');

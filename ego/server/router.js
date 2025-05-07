@@ -25,14 +25,14 @@ const config=require('./secret');
 router.post('/login', (req, res) => {
     let { username, password } = req.body
     //请求数据库
-    let sql = "select * from userinfo where username=? and password=?";
+    let sql = "select * from user where username=? and password=?";
     let arr = [username, password]
     sqlFn(sql, arr, result => {
         if (result.length > 0) {
             let token = jwt.sign({
                 username: result[0].username,
                 id: result[0].id
-            }, config.jwtSecert, {
+            }, config.jwtSecret, {
                 expiresIn: 20 * 1
             })
             res.send({

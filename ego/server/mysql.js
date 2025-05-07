@@ -13,7 +13,7 @@ const client =mysql.createConnection({
 function sqlFun(sql,arr,callback){
     client.query(sql,arr,function(error,result){
         if(error){
-            console.log('数据库语句错误');
+            console.log('数据库语句错误',error);
             return ;
         }
         callback(result)

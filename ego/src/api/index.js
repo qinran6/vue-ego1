@@ -8,6 +8,7 @@ const qs=require('querystring')
 const api={
     //登录接口
     getLogin(params){//params={username:'',password:''}
+        console.log(base.login);
         return axios.post(base.login,qs.stringify(params))
     },
     //商品列表
