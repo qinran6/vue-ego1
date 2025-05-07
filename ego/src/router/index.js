@@ -87,7 +87,6 @@ const router = new VueRouter({
 
 //路由拦截
 router.beforeEach((to,from,next)=>{
-  console.log('---to----',to);
   //1、判断是否需要登录
   if(to.matched.some(ele=>ele.meta.isLogin)){
     //2.判断当前用户是否已经登录
