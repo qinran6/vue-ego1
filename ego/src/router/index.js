@@ -23,6 +23,10 @@ const routes = [
   {
     path:'',
     component:Layout,
+    //路由元信息
+    meta:{
+      isLogin:true
+    },
     children:[
       {
         path:'/',
@@ -80,5 +84,22 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
+//路由拦截
+router.beforeEach((to,from,next)=>{
+  console.log('---to----',to);
+  //1、判断是否需要登录
+  if(to.matched.some(ele=>ele.meta.isLogin)){
+    //2.判断当前用户是否已经登录
+    let token='';
+    if(token){
+      next()
+    }else{
+      next('/login')
+    }
+  }else{//不需要登录
+    next();
+  }
+});
 
 export default router
