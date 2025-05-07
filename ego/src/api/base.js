@@ -1,6 +1,7 @@
 //接口路径配置
 
 import AddGoods from "@/views/Goods/AddGoods.vue";
+import Login from "@/views/Login/login.vue";
 
 //import { search } from "server/router";
 
@@ -13,6 +14,7 @@ const base={
     addGoods:'/api/api/backend/item/insertTbItem',//添加商品
     deleteGoods:'/api/api/backend/item/deleteItemById',//删除商品
     updateGoods:'/api/api/backend/item/updateTbItem',//编辑商品
+    Login:'/api/api/login',//登录接口
 }
 
 export default base;

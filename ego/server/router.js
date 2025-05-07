@@ -5,6 +5,74 @@ const sqlFn = require('./mysql')
 //图片需要的模块
 const multer = require('multer')
 const fs = require('fs')
+//导入模块 jsonwebtoken 密钥
+const jwt=require('jsonwebtoken');
+//config.jwtSecret
+const config=require('./secret');
+
+//登录接口
+/**
+ * 语法：
+ * 如60，"2 days"，"10h"，"7d"，Expiration time，过期时间
+ *  jwt.sign({},'秘钥','过期时间,{expiresIn:20*1,'1day''1h'}')
+ */
+
+/**
+ * 登录 login
+ * 接受的字段：username,password
+ * 测试：postman  
+ */
+router.post('/login', (req, res) => {
+    let { username, password } = req.body
+    //请求数据库
+    let sql = "select * from userinfo where username=? and password=?";
+    let arr = [username, password]
+    sqlFn(sql, arr, result => {
+        if (result.length > 0) {
+            let token = jwt.sign({
+                username: result[0].username,
+                id: result[0].id
+            }, config.jwtSecert, {
+                expiresIn: 20 * 1
+            })
+            res.send({
+                status: 200,
+                data: token
+            })
+        } else {
+            res.send({
+                status: 404,
+                msg: '信息错误'
+            })
+        }
+
+    })
+})
+
+/**
+ * 注册接口 /register
+ */
+router.post("/register", (req, res) => {
+    const {
+        username,
+        password
+    } = req.body;
+    const sql = "insert into userinfo values(null,?,?)";
+    const arr = [username, password];
+    sqlFn(sql, arr, (result) => {
+        if (result.affectedRows > 0) {
+            res.send({
+                msg: "注册成功",
+                status: 200
+            })
+        } else {
+            res.status(401).json({
+                errors: "用户名密码错误"
+            })
+        }
+    })
+})
+
 
 /**
  * 商品列表：获取分页 {total:'',arr:[{},{},{}],pagesize:8,}

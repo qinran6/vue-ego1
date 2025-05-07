@@ -2,7 +2,14 @@
 
 import axios from 'axios'
 import base from './base'
+//node.js
+const qs=require('querystring')
+
 const api={
+    //登录接口
+    getLogin(params){//params={username:'',password:''}
+        return axios.post(base.login,qs.stringify(params))
+    },
     //商品列表
     getGoodsList(params){//page:xx
         return axios.get(base.goodsList,{

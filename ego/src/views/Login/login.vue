@@ -55,6 +55,14 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           console.log('校验通过',this.loginForm);
+          let { username,password} =this.loginForm;
+          console.log(username,password);
+          //请求登录接口----------
+          this.$api.getLogin({
+            username,password
+          }).then(res=>{
+            console.log('------',res.data);
+          })
         } else {
           console.log('error submit!!');
           return false;

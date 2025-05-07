@@ -1,0 +1,3 @@
+module.export ={
+    jwtSecret:'lalalahahahazhousil'
+}
