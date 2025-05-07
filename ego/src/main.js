@@ -11,8 +11,11 @@ Vue.prototype.$api=api;
 
 //导入语言
 import i18n from './lang/index'
+import './router/permission'
+import './utils/localStorage'
 
 Vue.config.productionTip = false
+
 
 new Vue({
   router,

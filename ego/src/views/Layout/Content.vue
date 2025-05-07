@@ -16,6 +16,8 @@
           </el-dropdown-menu>
         </el-dropdown>
         <div class="user"> 
+          欢迎：{{ user.user }}
+          <i class="iconfont icon-tuichu" @click="loginout"></i>
           <span>{{$t ("register.welcome")}}</span>
           <span>{{$t ("register.quit")}}</span>
         </div>
@@ -30,10 +32,16 @@
 </template>
 
 <script>
+import { mapState,mapMutations } from 'vuex';
+
 export default {
   // 接收isCollapse的值
   props:['isCollapse'],
+  computed:{
+    ...mapState('loginModule',['user'])
+  },
   methods:{
+    ...mapMutations('loginModule',['clearUser']),
     changeMenu(){
       // 点击切换按钮时 修改父组件的数据 isCollapse
       this.$emit('changeCollapse')
@@ -41,6 +49,15 @@ export default {
     clickLang(command){
       console.log(command);
       this.$i18n.locale=command;
+    },
+    loginout(){
+      //退出登录
+      //清空vuex数据
+      this.clearUser()
+      //清空本地存储
+      localStorage.removeItem('user')
+      //返回登录
+      this.$router.push('/login')
     }
   }
 }

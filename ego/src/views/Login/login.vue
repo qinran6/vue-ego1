@@ -75,6 +75,10 @@ export default {
                 token:res.data.data
               }
               this.setUser(obj)
+              //存储本地
+              localStorage.setItem('user',JSON.stringify(obj))
+              //跳转
+              this.$router.push('/')
               //this.info=''
             }else{
               //账号或者密码错误
