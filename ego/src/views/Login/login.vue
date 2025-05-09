@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import jwt from 'jwt-decode'
+import {jwtDecode} from 'jwt-decode'
 import {mapMutations} from 'vuex'
 export default {
   data() {
@@ -59,19 +59,17 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          console.log('校验通过',this.loginForm);
           let { username,password} =this.loginForm;
-          console.log(username,password);
           //请求登录接口----------
           this.$api.getLogin({
             username,password
           }).then(res=>{
             console.log('------',res.data);
             if(res.data.status===200){
-              console.log(jwt(res.data.data));
+              console.log(jwtDecode(res.data.data));
               //登录成功后：1、存储登录信息 2、跳转网页 3、顶部区域显示用户信息 4、持久化
               let obj={
-                user:jwt(res.data.data).username,
+                user:jwtDecode(res.data.data).username,
                 token:res.data.data
               }
               this.setUser(obj)

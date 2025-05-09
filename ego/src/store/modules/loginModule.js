@@ -1,7 +1,7 @@
 export default {
-    namespace:true,
+    namespaced:true,
     state:{
-        user:{
+        userinfo:{
             user:'',
             token:''
         }
@@ -9,11 +9,11 @@ export default {
     mutations:{
         //设置用户信息
         setUser(state,payload){
-            state.user=payload;
+            state.userinfo=payload;
         },
         //清空
         clearUser(state){
-            state.user={
+            state.userinfo={
                 user:'',
                 token:''
             }

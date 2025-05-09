@@ -16,7 +16,7 @@
           </el-dropdown-menu>
         </el-dropdown>
         <div class="user"> 
-          欢迎：{{ user.user }}
+          欢迎：{{ userinfo.user }}
           <i class="iconfont icon-tuichu" @click="loginout"></i>
           <span>{{$t ("register.welcome")}}</span>
           <span>{{$t ("register.quit")}}</span>
@@ -38,7 +38,7 @@ export default {
   // 接收isCollapse的值
   props:['isCollapse'],
   computed:{
-    ...mapState('loginModule',['user'])
+    ...mapState('loginModule',['userinfo'])
   },
   methods:{
     ...mapMutations('loginModule',['clearUser']),

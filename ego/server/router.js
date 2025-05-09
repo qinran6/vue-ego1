@@ -33,7 +33,7 @@ router.post('/login', (req, res) => {
                 username: result[0].username,
                 id: result[0].id
             }, config.jwtSecret, {
-                expiresIn: 20 * 1
+                expiresIn: 20*1
             })
             res.send({
                 status: 200,
