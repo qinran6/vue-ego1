@@ -27,8 +27,8 @@ export default {
         operation:'Operation',
         },
     register:{
-        welcome:'Welcome:×××',
+        welcome:'Welcome:',
         quit:'Quit',
-        lang:'language',
+        lang:'Language',
     },
 }

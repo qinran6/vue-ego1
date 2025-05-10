@@ -26,8 +26,8 @@ export default {
         operation:'操作',
     },
     register:{
-        welcome:'欢迎:×××',
-        quit:'退出登陆',
+        welcome:'欢迎：',
+        quit:'退出',
         lang:'多语言',
     },
 }

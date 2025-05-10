@@ -34,9 +34,9 @@ const i18n = new VueI18n({
 
 
 //兼容写法
-// Vue.use(Element, {
-//     i18n: (key, value) => i18n.t(key, value)
-// })
+Vue.use(Element, {
+    i18n: (key, value) => i18n.t(key, value)
+})
 
 //3. 导出i18n 
 export default i18n

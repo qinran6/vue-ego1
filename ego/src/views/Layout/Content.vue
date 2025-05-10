@@ -16,9 +16,8 @@
           </el-dropdown-menu>
         </el-dropdown>
         <div class="user"> 
-          欢迎：{{ userinfo.user }}
+          <span>{{$t ("register.welcome")}}</span> {{ userinfo.user }}
           <i class="iconfont icon-tuichu" @click="loginout"></i>
-          <span>{{$t ("register.welcome")}}</span>
           <span>{{$t ("register.quit")}}</span>
         </div>
       </div>

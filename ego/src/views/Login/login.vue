@@ -81,7 +81,7 @@ export default {
             }else{
               //账号或者密码错误
               //this.info='账号或者密码错误'
-              this.$message.error('错了哦，这是一条错误消息');
+              this.$message.error('账号或者密码错误');
             }
           }).catch((err) => {
             console.log('error:  ', err);
