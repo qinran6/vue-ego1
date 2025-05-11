@@ -36,25 +36,25 @@
         <span slot="title">{{$t ("menu.goods")}}</span>
       </el-menu-item>
 
-      <el-menu-item index="/params">
-        <i class="el-icon-setting"></i>
-        <!-- <span slot="title">规格参数</span> -->
-        <!-- 
+
+     
+      <el-submenu index="/params">
         <template v-slot:title>
-        <span>规格参数</span>
+          <i class="el-icon-setting"></i>
+          <!-- <span slot="title">规格参数</span> -->
+          <span slot="title">{{$t ("menu.params")}}</span>
         </template>
-        -->
-        <span slot="title">{{$t ("menu.params")}}</span>
-      </el-menu-item>
+        
+          <el-menu-item index="/params/specifications">
+            <i class="el-icon-setting"></i>
+            <span slot="title">{{$t ("menu.specs")}}</span>
+          </el-menu-item>
+        
+      </el-submenu>
 
       <el-menu-item index="/advert">
         <i class="el-icon-setting"></i>
-        <!-- <span slot="title">规格参数</span> -->
-        <!-- 
-        <template v-slot:title>
-        <span>广告分类</span>
-        </template>
-        -->
+        <!-- <span slot="title">广告分类</span> -->
         <span slot="title">{{$t ("menu.adclassify")}}</span>
       </el-menu-item>
 

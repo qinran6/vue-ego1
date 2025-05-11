@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-view></router-view>
+    <h2>规格与包装</h2>
   </div>
 </template>
 

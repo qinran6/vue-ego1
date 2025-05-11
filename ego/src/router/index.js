@@ -9,6 +9,7 @@ import Login from '../views/Login/login.vue'
 // 异步
 const Goods=()=>import('../views/Goods/Goods.vue')
 const Params=()=>import('../views/Params/Params.vue')
+const Specifications=()=>import('../views/Params/ParamsInfo/Specifications.vue')
 const Advert=()=>import('../views/Advert/Advert.vue')
 const Order=()=>import('../views/Order/index.vue')
 const OrderList=()=>import('../views/Order/OrderList/index.vue')
@@ -46,7 +47,16 @@ const routes = [
       {
         path:'/params',
         name:'Params',
-        component:Params
+        component:Params,
+        redirect:'/params/specifications',
+        children:[
+          {
+            path:'specifications',
+            name:'Specifications',
+            component:Specifications
+          }
+        ]
+
       },
       {
         path:'/advert',
