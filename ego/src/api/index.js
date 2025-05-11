@@ -46,6 +46,10 @@ const api={
    */
    updateGoods(params){
     return axios.get(base.updateGoods,{params})
+   },
+   /*规格参数获取列表 page:xx*/
+   getParams(params){
+        return axios.get(base.params,{params})
    }
 }
 

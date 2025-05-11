@@ -36,12 +36,6 @@ const routes = [
         name:'Home',
         component:Home
       },
-      // {
-      //   path:'/goods',
-      //   name:'Goods',
-      //   component:Goods,
-
-      // },
       {
         path:'/goods',
         name:'Goods',
