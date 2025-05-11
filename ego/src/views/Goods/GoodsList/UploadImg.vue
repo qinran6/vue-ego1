@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import base  from '../../api/base'
+import base  from '../../../api/base'
 export default {
     data() {
       return {

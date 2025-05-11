@@ -25,18 +25,23 @@
         <span slot="title">{{$t ("menu.home")}}</span>
       </el-menu-item>
 
-      <el-menu-item index="/goods">
-        <i class="el-icon-document"></i>
-        <!-- <span slot="title">商品管理</span> -->
-        <!-- 
-        <template v-slot:title>
-        <span>商品管理</span>
+
+
+      <el-submenu index="/goods">
+        <template slot="title">
+          <i class="el-icon-s-cooperation"></i>
+          <!-- <span slot="title">商品管理</span> -->
+          <span slot="title">{{ $t("menu.goods") }}</span>
         </template>
-        -->
-        <span slot="title">{{$t ("menu.goods")}}</span>
-      </el-menu-item>
-
-
+          <el-menu-item index="/goods/goods-list">
+            <i class="el-icon-menu"></i>
+            <span slot="title">商品列表</span>
+          </el-menu-item>
+          <el-menu-item index="/goods/goods-verify">
+            <i class="el-icon-menu"></i>
+            <span slot="title">商品审核</span>
+          </el-menu-item>
+      </el-submenu>
      
       <el-submenu index="/params">
         <template v-slot:title>
@@ -47,7 +52,7 @@
         
           <el-menu-item index="/params/specifications">
             <i class="el-icon-setting"></i>
-            <span slot="title">{{$t ("menu.specs")}}</span>
+            <span slot="title">规格与包装</span>
           </el-menu-item>
         
       </el-submenu>

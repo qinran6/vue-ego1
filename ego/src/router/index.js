@@ -7,7 +7,9 @@ import Login from '../views/Login/login.vue'
 
 
 // 异步
-const Goods=()=>import('../views/Goods/Goods.vue')
+const Goods=()=>import('../views/Goods/GoodsList/Goods.vue')
+const GoodsList = ()=>import('../views/Goods/GoodsList/Goods.vue')
+const GoodsVerify = ()=>import('../views/Goods/GoodsVerify/index.vue')
 const Params=()=>import('../views/Params/Params.vue')
 const Specifications=()=>import('../views/Params/ParamsInfo/Specifications.vue')
 const Advert=()=>import('../views/Advert/Advert.vue')
@@ -16,7 +18,7 @@ const OrderList=()=>import('../views/Order/OrderList/index.vue')
 const OrderBack=()=>import('../views/Order/OrderBack/index.vue')
 
 //子级路由
-const AddGoods=()=>import('../views/Goods/AddGoods.vue')
+const AddGoods=()=>import('../views/Goods/GoodsList/AddGoods.vue')
 
 Vue.use(VueRouter)
 

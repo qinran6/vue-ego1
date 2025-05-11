@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import MyPagination from '../../components/MyPagination.vue'
+import MyPagination from '../../../components/MyPagination.vue'
 import GoodsDialog from './GoodsDialog.vue'
 import AddGoods from './AddGoods.vue';
 export default {
