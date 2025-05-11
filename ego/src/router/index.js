@@ -36,10 +36,28 @@ const routes = [
         name:'Home',
         component:Home
       },
+      // {
+      //   path:'/goods',
+      //   name:'Goods',
+      //   component:Goods,
+
+      // },
       {
         path:'/goods',
         name:'Goods',
-        component:Goods
+        component:Goods,
+        redirect:'/goods/goods-list',
+        children:[
+          {
+            path:'goods-list',
+            name:'GoodsList',
+            component:GoodsList
+          },{
+            path:'goods-verify',
+            name:'GoodsVerify',
+            component:GoodsVerify
+          }
+        ]
       },
       {
         path:'/add-goods',
