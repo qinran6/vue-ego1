@@ -30,11 +30,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary">查询</el-button>
-          <el-button type="success">
-            <router-link to="/add-goods" style="color: #fff"
-              >页面添加</router-link
-            >
-          </el-button>
+          
           <el-button type="primary" @click="addGoods">弹框添加</el-button>
         </el-form-item>
       </el-form>
