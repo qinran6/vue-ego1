@@ -16,12 +16,10 @@
     "multer": "^1.4.5-lts.2",
     "mysql": "^2.18.1",
     "path-to-regexp": "^8.2.0",
-    "pdfjs-dist": "^3.4.120",
     "querystring-es3": "^0.2.1",
     "vue": "^2.6.14",
     "vue-i18n": "^8.28.2",
     "vue-router": "^3.5.1",
-    "vue-tour": "^2.0.0",
     "vuex": "^3.6.2",
     "wangeditor": "^4.7.15"
   },
