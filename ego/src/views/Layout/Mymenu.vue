@@ -82,6 +82,10 @@
           </el-menu-item>
         </el-menu-item-group>
       </el-submenu>
+          <el-menu-item index="/user">
+          <i class="el-icon-data-board"></i>
+          <span slot="title">个人中心</span>
+       </el-menu-item>
 
     </el-menu>
 
