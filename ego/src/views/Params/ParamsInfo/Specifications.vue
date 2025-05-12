@@ -19,11 +19,10 @@
 
     <!-- 3. 表格 -->
     <el-table :data="tableData" class="my-table">
-      <el-table-column prop="id" label="规格参数ID" width="120">
+      <el-table-column prop="itemCatId" label="规格参数ID" width="120">
       </el-table-column>
-      <el-table-column prop="itemCatId" label="类目ID" width="120"> </el-table-column>
+      <el-table-column prop="id" label="类目ID" width="120"> </el-table-column>
       <el-table-column prop="specsName" label="规格名称" width="120">
-        <!-- //specsName -->
       </el-table-column>
       <el-table-column prop="paramData" label="规格参数" show-overflow-tooltip>
       </el-table-column>
@@ -48,6 +47,9 @@
     />
     <!-- 5. 弹框 -->
     <ParamsDialog ref='dialog'/>
+
+
+    
   </div>
 </template>
 
