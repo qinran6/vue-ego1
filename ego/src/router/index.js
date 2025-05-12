@@ -16,7 +16,7 @@ const Advert=()=>import('../views/Advert/Advert.vue')
 const Order=()=>import('../views/Order/index.vue')
 const OrderList=()=>import('../views/Order/OrderList/index.vue')
 const OrderBack=()=>import('../views/Order/OrderBack/index.vue')
-
+const User=()=>import('../views/User/index.vue')
 //子级路由
 const AddGoods=()=>import('../views/Goods/GoodsList/AddGoods.vue')
 
@@ -77,6 +77,11 @@ const routes = [
         name:'Advert',
         component:Advert
       },
+       {
+        path:'/user',
+        name:'User',
+        component:User
+      },     
       {
         path:'/order',
         name:'Order',
