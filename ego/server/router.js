@@ -399,7 +399,7 @@ router.get("/backend/itemParam/insertItemParam", (req, res) => {
     var specsName = req.query.specsName;
     // console.log(itemCatId, paramsContent,specsName);
     var sql = "insert into params values (null,?,?,?)";
-    sqlFn(sql, [itemCatId, paramsContent, specsName], result => {
+    sqlFn(sql, [itemCatId,specsName ,paramsContent ], result => {
         if (result.affectedRows > 0) {
             res.send({
                 status: 200,
