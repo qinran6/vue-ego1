@@ -35,11 +35,11 @@
         </template>
           <el-menu-item index="/goods/goods-list">
             <i class="el-icon-menu"></i>
-            <span slot="title">商品列表</span>
+            <span slot="title">{{$t ("menu.good_list")}}</span>
           </el-menu-item>
           <el-menu-item index="/goods/goods-verify">
             <i class="el-icon-menu"></i>
-            <span slot="title">商品审核</span>
+            <span slot="title">{{$t ("menu.check")}}</span>
           </el-menu-item>
       </el-submenu>
      
@@ -52,7 +52,7 @@
         
           <el-menu-item index="/params/specifications">
             <i class="el-icon-setting"></i>
-            <span slot="title">规格与包装</span>
+            <span slot="title">{{$t ("menu.packaging")}}</span>
           </el-menu-item>
         
       </el-submenu>

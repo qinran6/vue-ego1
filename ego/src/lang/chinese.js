@@ -3,11 +3,18 @@ export default {
         ego:'易购后台管理系统',
         home:'首页',
         goods:'商品管理',
+        good_list:'商品列表',
+        check:'商品审核',
         params:'规格参数',
+        packaging:'规格包装',
         adclassify:'广告分类',
         management:'订单管理',
         list:'订单列表',
         return:'退货管理',
+    },
+    home:{
+        welcome:'欢迎来到易购商城后台管理系统',
+        here:'在这里，您可以管理商品、订单、用户等信息。',
     },
     goods:{
         inquire:'查询',

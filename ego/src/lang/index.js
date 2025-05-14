@@ -20,7 +20,7 @@ const messages = {
     //2. 中文
     zh: {
         ...chinese,
-        ...zhLocale
+        ...zhLocale,
     }
     
 }

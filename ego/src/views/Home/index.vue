@@ -1,8 +1,8 @@
 <template>
   <div class="home-page">
     <div class="welcome-section">
-      <h2>欢迎来到商城后台管理系统</h2>
-      <p>在这里，您可以管理商品、订单、用户等信息。</p>
+      <h2>{{$t ("home.welcome")}}</h2>
+      <p>{{$t ("home.here")}}</p>
     </div>
     <div class="image-section">
       <img src="/hello.jpg" alt="欢迎图片" class="welcome-image" />
